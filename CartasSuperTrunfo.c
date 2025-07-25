@@ -10,27 +10,45 @@ typedef struct {
     int pontosTuristicos;
 } CartaCidade;
 
-int main() {
-    // Carta 1: São Paulo
-    CartaCidade carta1 = {
-        "A",            // Estado
-        "A01",          // Código
-        "São Paulo",    // Nome da Cidade
-        12325000,       // População
-        1521.11,        // Área em km²
-        699.28,         // PIB em bilhões de reais
-        50              // Número de Pontos Turísticos
-    };
+void mostrarCarta(CartaCidade c) {
+    printf("\n=== Carta ===\n");
+    printf("Estado: %s", c.estado);
+    printf("Código: %s", c.codigo);
+    printf("Cidade: %s", c.nomeCidade);
+    printf("População: %d habitantes\n", c.populacao);
+    printf("Área: %.2f km²\n", c.area);
+    printf("PIB: R$ %.2f bilhões\n", c.pib);
+    printf("Pontos Turísticos: %d\n", c.pontosTuristicos);
+}
 
-    // Mostrar os dados da carta
-    printf("=== Carta 1 ===\n");
-    printf("Estado: %s\n", carta1.estado);
-    printf("Código: %s\n", carta1.codigo);
-    printf("Cidade: %s\n", carta1.nomeCidade);
-    printf("População: %d habitantes\n", carta1.populacao);
-    printf("Área: %.2f km²\n", carta1.area);
-    printf("PIB: R$ %.2f bilhões\n", carta1.pib);
-    printf("Pontos Turísticos: %d\n", carta1.pontosTuristicos);
+int main() {
+    CartaCidade carta1, carta2;
+
+    // === Entrada da Carta 1 ===
+    printf("=== Cadastro da Carta 1 ===\n");
+    printf("Estado: "); fgets(carta1.estado, sizeof(carta1.estado), stdin);
+    printf("Código: "); fgets(carta1.codigo, sizeof(carta1.codigo), stdin);
+    printf("Cidade: "); fgets(carta1.nomeCidade, sizeof(carta1.nomeCidade), stdin);
+    printf("População: "); scanf("%d", &carta1.populacao);
+    printf("Área (km²): "); scanf("%f", &carta1.area);
+    printf("PIB (bilhões): "); scanf("%f", &carta1.pib);
+    printf("Pontos turísticos: "); scanf("%d", &carta1.pontosTuristicos);
+    getchar(); // limpa o \n do buffer
+
+    // === Entrada da Carta 2 ===
+    printf("\n=== Cadastro da Carta 2 ===\n");
+    printf("Estado: "); fgets(carta2.estado, sizeof(carta2.estado), stdin);
+    printf("Código: "); fgets(carta2.codigo, sizeof(carta2.codigo), stdin);
+    printf("Cidade: "); fgets(carta2.nomeCidade, sizeof(carta2.nomeCidade), stdin);
+    printf("População: "); scanf("%d", &carta2.populacao);
+    printf("Área (km²): "); scanf("%f", &carta2.area);
+    printf("PIB (bilhões): "); scanf("%f", &carta2.pib);
+    printf("Pontos turísticos: "); scanf("%d", &carta2.pontosTuristicos);
+
+    // === Saída das Cartas ===
+    printf("\n=== Exibindo Cartas Cadastradas ===\n");
+    mostrarCarta(carta1);
+    mostrarCarta(carta2);
 
     return 0;
 }
